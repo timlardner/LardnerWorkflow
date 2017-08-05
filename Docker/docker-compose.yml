@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ./scripts/run_celery.sh
+    volumes:
+      - .:/app
+
+  beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ./scripts/run_celery_beat.sh
+    volumes:
+      - ../.:/app
